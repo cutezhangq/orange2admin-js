@@ -1,0 +1,19 @@
+option{
+    font-size: large;
+}
+.form-control{
+    font-size: 17px;
+}
+tbody tr td{
+    text-align: center;
+}
+.lyear-checkbox input span{
+    justify-content: center;
+    align-items: center;
+}
+th:first-child{
+    width: 18px;
+}
+tr:first-child{
+    width: 18px;
+}

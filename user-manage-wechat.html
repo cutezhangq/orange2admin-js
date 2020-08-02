@@ -1,0 +1,242 @@
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>微信公众号用户管理</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="vendor/MaterialDesign/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-select-1.13.7/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/user-manage-wechat.css">
+    <!--批量删除--对话框-->
+    <link rel="stylesheet" href="vendor/jconfirm/jquery-confirm.min.css">
+
+</head>
+<body>
+<div class="container-fluid p-t-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <h3 class="card-header">微信公众号用户管理</h3>
+                <div class="card-toolbar clearfix">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div>显示数目
+                                <select class="selectpicker dataNumber">
+                                    <option>9</option>
+                                    <option>12</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="selectpicker filterField" multiple data-selected-text-format="count">
+                                <option>手机号</option>
+                                <option>绑定设备数</option>
+                                <option>公众号访问次数</option>
+                                <option>设备播放总时长</option>
+                                <option>活跃度</option>
+                            </select>
+                            <input type="button" class="btn btn-info filterBtn" value="请筛选">
+                        </div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-yellow" style="margin-left: 41%;">条件查询</button>
+                            <button class="btn btn-success newDataInfo" data-toggle="modal" data-target="#addDevInfoDate">新增数据</button>
+                            <button class="btn btn-warning">批量修改</button>
+                            <button class="btn btn-danger example-p-6 batchDel">批量删除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tbl-devInfo">
+                            <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" class="checkAll"><span></span>
+                                    </label>
+                                </th>
+                                <th class="text-center">微信ID</th>
+                                <th class="text-center">手机号</th>
+                                <th class="text-center">绑定设备数</th>
+                                <th class="text-center">公众号访问次数</th>
+                                <th class="text-center">设备播放总时长</th>
+                                <th class="text-center">活跃度</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>3wqre42322523fegwg</td>
+                                    <td>13854953857</td>
+                                    <td>1</td>
+                                    <td>1256</td>
+                                    <td>1024h</td>
+                                    <td>6</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>53252njwgawgiu46t36b</td>
+                                    <td>13958394837</td>
+                                    <td>1</td>
+                                    <td>2100</td>
+                                    <td>890h</td>
+                                    <td>5</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>ewgwg901348094839</td>
+                                    <td>13628495209</td>
+                                    <td>2</td>
+                                    <td>890</td>
+                                    <td>750h</td>
+                                    <td>2</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>regio023890ewgw</td>
+                                    <td>13829481092</td>
+                                    <td>1</td>
+                                    <td>901</td>
+                                    <td>1021h</td>
+                                    <td>3</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>vnxvsd809328csdv</td>
+                                    <td>13902948592</td>
+                                    <td>2</td>
+                                    <td>2819</td>
+                                    <td>886h</td>
+                                    <td>5</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>wqrfuixvs80934809zxvc</td>
+                                    <td>13829405762</td>
+                                    <td>2</td>
+                                    <td>1562</td>
+                                    <td>1420h</td>
+                                    <td>2</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>wr9034fsdg890ggg</td>
+                                    <td>13659483029</td>
+                                    <td>3</td>
+                                    <td>654</td>
+                                    <td>2390h</td>
+                                    <td>5</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>9032ohigei428092443w</td>
+                                    <td>13724837201</td>
+                                    <td>2</td>
+                                    <td>6432</td>
+                                    <td>2093h</td>
+                                    <td>2</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                    <td>pipgwio2048209sfwe</td>
+                                    <td>13728490944</td>
+                                    <td>1</td>
+                                    <td>309</td>
+                                    <td>300h</td>
+                                    <td>2</td>
+                                    <td><div class="btn-group">
+                                        <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                        <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                    </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--分页导航，分页信息-->
+                    <div class="row">
+                        <div class="col-lg-4 pageInfo">当前第1页，总共342页，总共32523条记录</div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4 pageNav">
+                            <div class="col-lg-2"></div>
+                            <nav>
+                                <ul class="pagination pagination-circle">
+                                    <li class="disabled"><a href="#">首</a></li>
+                                    <li class="disabled"><a href="#">«</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li class=""><a href="#">2</a></li>
+                                    <li class=""><a href="#">3</a></li>
+                                    <li class=""><a href="#">4</a></li>
+                                    <li class=""><a href="#">5</a></li>
+                                    <li class=""><a href="#">6</a></li>
+                                    <li class=""><a href="#">»</a></li>
+                                    <li class=""><a href="#">尾</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class=" col-lg-2"></div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/bootstrap-select.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/i18n/defaults-zh_CN.js"></script>
+
+    <!--<script type="text/javascript" src="vendor/main.min.js"></script>-->
+    <script src="js/pageInfo&nav.js"></script>
+
+
+</div>
+</body>
+</html>

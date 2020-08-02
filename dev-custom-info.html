@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>设备基本管理</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="vendor/materialdesign/css/materialdesignicons.css">
+    <link rel="stylesheet" href="vendor/bootstrap-select-1.13.7/css/bootstrap-select.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/dev-custom.css">
+    <!--批量删除--对话框-->
+    <link rel="stylesheet" href="vendor/jconfirm/jquery-confirm.min.css">
+</head>
+<body>
+<div class="container-fluid p-t-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <h3 class="card-header">设备定制管理</h3>
+                <div class="card-toolbar clearfix">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div>显示数目
+                                <select class="selectpicker dataNumber">
+                                    <option>5</option>
+                                    <option>12</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="selectpicker filterField" multiple data-selected-text-format="count">
+                            </select>
+                            <input type="button" class="btn btn-info filterBtn" value="请筛选">
+                        </div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-yellow" style="margin-left: 41%;">条件查询</button>
+                            <!--<button class="btn btn-warning">批量修改</button>-->
+                            <button class="btn btn-danger example-p-6 batchDel">批量删除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tbl-devCustom">
+                            <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" class="checkAll"><span></span>
+                                    </label>
+                                </th>
+                                <th class="text-center">设备ID</th>
+                                <th class="text-center">设备发音性别</th>
+                                <th class="text-center">设备发音速度</th>
+                                <th class="text-center">合成发音角色</th>
+                                <th class="text-center">合成发音速度</th>
+                                <th class="text-center">语音合成来源</th>
+                                <th class="text-center">播放方式</th>
+                                <th class="text-center">课程ID</th>
+                                <th class="text-center">适龄范围</th>
+                                <th class="text-center">每日推送提醒</th>
+                                <th class="text-center">等级提醒</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 pageInfo"></div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4 pageNav">
+                            <nav>
+                                <ul class="pagination pagination-circle"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!--操作 修改小图标--update数据模态框-->
+                <div class="modal fade updateDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleModalLabel">修改设备定制管理</h4>
+                            </div>
+                            <div class="modal-body center-block">
+                                <form class="form-horizontal" role="form">
+                                            <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" >设备id</label>
+                                                <div class="col-sm-8" style="line-height: 30px;">
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label" >设备发音</label>
+                                            <div class="col-sm-8">
+                                                <label class="radio-inline ">
+                                                    <input type="radio" name="optionsRadiosinline" value="1" checked> 男音
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadiosinline" value="0"> 女音
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label" >对话发音</label>
+                                            <div class="col-sm-8">
+                                                <label class="radio-inline ">
+                                                    <input type="radio" name="optionsRadiottsVoice" value="girl" checked> 童声
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadiottsVoice" value="woman"> 女音
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">对话语速</label>
+                                            <div class="col-sm-8">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsSpeed" value="1" checked> 慢
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsSpeed" value="2"> 稍慢
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsSpeed" value="4"> 中
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsSpeed" value="6"> 快
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">播放方式</label>
+                                            <div class="col-lg-3">
+                                                <select class="form-control">
+                                                    <option value="order">顺序</option>
+                                                    <option value="loop">循环</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">适龄范围</label>
+                                            <div class="col-lg-3">
+                                                <select class="form-control minAge">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <select class="form-control maxAge">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">等级提醒</label>
+                                            <div class="col-sm-8">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRank" value="1" checked> 开启
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRank" value="0"> 关闭
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">开机引导</label>
+                                            <div class="col-sm-8">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionStart" id="optionsRadios5" value="1" checked> 开启
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionStart" id="optionsRadios6"  value="0"> 关闭
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary" id="updateCommit">确认</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--新增数据--添加数据模态框-->
+                <!-- <div class="modal fade addDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                     <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                                 <h4 class="modal-title" id="">添加设备定制管理</h4>
+                             </div>
+                             <div class="modal-body center-block">
+                                 <form class="form-horizontal" role="form">
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label" >设备id</label>
+                                             <div class="col-sm-6" style="line-height: 30px;">
+                                                 <input type="text" class="form-control"  placeholder="">
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label" >设备发音</label>
+                                             <div class="col-sm-8">
+                                                 <label class="radio-inline ">
+                                                     <input type="radio" name="optionsRadiosinline" value="1" checked> 男音
+                                                 </label>
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsRadiosinline" value="0"> 女音
+                                                 </label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label" >对话发音</label>
+                                             <div class="col-sm-8">
+                                                 <label class="radio-inline ">
+                                                     <input type="radio" name="optionsRadiottsVoice" value="girl" checked> 童声
+                                                 </label>
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsRadiottsVoice" value="woman"> 女音
+                                                 </label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label">对话语速</label>
+                                             <div class="col-sm-8">
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsSpeed" value="1" checked> 慢
+                                                 </label>
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsSpeed" value="2"> 稍慢
+                                                 </label>
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsSpeed" value="4"> 中
+                                                 </label>
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsSpeed" value="6"> 快
+                                                 </label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label">播放方式</label>
+                                             <div class="col-lg-3">
+                                                 <select class="form-control">
+                                                     <option value="order">顺序</option>
+                                                     <option value="loop">循环</option>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label">适龄范围</label>
+                                             <div class="col-lg-3">
+                                                 <select class="form-control minAge">
+                                                     <option>1</option>
+                                                     <option>2</option>
+                                                     <option>3</option>
+                                                     <option>4</option>
+                                                     <option>5</option>
+                                                 </select>
+                                             </div>
+                                             <div class="col-lg-3">
+                                                 <select class="form-control maxAge">
+                                                     <option>1</option>
+                                                     <option>2</option>
+                                                     <option>3</option>
+                                                     <option>4</option>
+                                                     <option>5</option>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label">等级提醒</label>
+                                             <div class="col-sm-8">
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsRank" value="1" checked> 开启
+                                                 </label>
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionsRank" value="0"> 关闭
+                                                 </label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="form-group">
+                                             <label class="col-sm-4 control-label">开机引导</label>
+                                             <div class="col-sm-8">
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionStart" id="optionsRadios5" value="1" checked> 开启
+                                                 </label>
+                                                 <label class="radio-inline">
+                                                     <input type="radio" name="optionStart" id="optionsRadios6"  value="0"> 关闭
+                                                 </label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </form>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                 <button type="button" class="btn btn-primary example-p-5" id="commit">提交</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>-->
+            </div>
+        </div>
+    </div>
+    <!--模态框 内容设置-->
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/bootstrap-select.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/i18n/defaults-zh_CN.js"></script>
+    <script src="js/entity.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/table-menu.js"></script>
+    <script src="js/pageInfo&nav.js"></script>
+    <script src="js/dev-custom-info.js"></script>
+    <!--批量删除---对话框-->
+    <script src="vendor/jconfirm/jquery-confirm.min.js"></script>
+</div>
+</body>
+</html>

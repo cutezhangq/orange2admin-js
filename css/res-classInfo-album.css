@@ -1,0 +1,141 @@
+h1 { font-size:16pt; }
+h2 { font-size:13pt; }
+ul { margin:0px; padding:0px; margin-left:20px; }
+/*#list1, #list2 { width:350px; list-style-type:none; margin:0px; }
+#list1 li, #list2 li { !*float:left;*! padding:5px; width:100px; height:100px; }
+#list1 div, #list2 div { width:90px; height:50px; border:solid 1px black; background-color:#E0E0E0; text-align:center; padding-top:40px; }
+#list2 { float:right; }*/
+.placeHolder div {
+    background-color:white !important;
+    border:dashed 1px gray !important;
+}
+
+
+
+li{list-style-type:none;
+    display: inline-block;}
+.uicard {
+    display: inline-block;
+    /*float: left; */
+    background: #fff;
+    width: 150px;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,.15), 0 0 4px 0 rgba(0,0,0,.2), 0 12px 12px 0 rgba(0,0,0,.15);
+    margin: 0.5rem 1rem;
+    transition: box-shadow .2s ease-in-out;
+}
+.placeHolder{
+    overflow: hidden;   /*清除浮动带来的影响，使得card被浮动起来的li撑开*/
+}
+#list3,#list4,#list5,#list6,#list7,#list8{
+    /*width: 550.38px; */
+    list-style-type:none;
+    margin:0px;
+}
+#list3 li,#list4 li,#list5 li,#list6 li,#list7 li,#list8 li{ padding:0px; width:150px; height:233px; }
+#list3 div, #list4 div , #list5 div,#list6 div,#list7 div,#list8 div{
+    width:140px;
+    height:110px;
+    border:solid 1px white;
+    background-color:#E0E0E0;
+    text-align:center;
+    padding-top:0px;
+}
+img{
+    width: 150px;
+    height: 110px;
+    /*overflow: hidden;*/
+}
+
+element.style {
+}
+.card-header + .card-body {
+    padding-top: 15px;
+}
+.card-body {
+    padding: 24px 0px;!important;
+}
+
+.table-responsive .innercard {
+    margin:10px 10px;!important;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.035);
+    box-shadow: 10px 11px 6px rgba(0, 0, 0, 0.035);
+    border: 2px solid rgba(0, 0, 0, 0.035);
+    border-radius: 10px;
+}
+.table-responsive  .col-lg-4 {
+    width: 31.333333%;!important;
+}
+/*鼠标滑过变暗begin*/
+/*
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: inline-table;
+}
+
+!* hovertreeaction *!
+.hovertreeaction {
+    width: 981px;
+    margin: 40px auto 0 auto;
+    overflow: hidden;
+}
+
+.hovertreeaction ul {
+    width: 996px;
+}
+
+.hovertreeaction ul li {
+    float: left;
+    margin-right: 14px;
+    margin-bottom: 13px;
+    display: inline;
+    width: 318px;
+    height: 343px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hovertreeaction ul li img {
+    border: 0;
+    text-decoration: none;
+    !*overflow: hidden;*!
+}
+
+.hovertreeaction .rsp {
+    width: 318px;
+    height: 343px;
+    overflow: hidden;
+    position: absolute;
+    background: #000;
+    top: 0px;
+    left: 0px;
+}
+
+.hovertreeaction .rsptext {
+    position: absolute;
+    width: 318px;
+    height: 343px;
+    left: -318px;
+    top: 0px;
+    overflow: hidden;
+}
+
+.hovertreeaction .rsptext h3 {
+    width: 318px;
+    margin-top: 130px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #000000;
+    font-family: "microsoft yahei";
+    font-size: 26px;
+}
+*/

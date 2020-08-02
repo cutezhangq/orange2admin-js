@@ -1,0 +1,441 @@
+body  { font:14px/1.5 微软雅黑; text-align:center; }
+table { border:1px solid #DDD; border-collapse:collapse; width:980px; margin-top:20px; }
+thead,
+tfoot { background:#FAFAFA; }
+td,th { border:1px solid #DDD; text-align:left; font-weight:normal; padding:15px; }
+th,
+.weather { width:100px; min-width:100px; max-width:100px; }
+td    { width:680px; min-width:680px; max-width:680px; }
+#weather { width:780px; margin:150px auto; background:#72af3c; color:#FFF; padding:50px 0 100px 0; overflow:hidden; border-radius:5000px; }
+#weather i { background: no-repeat top left; display:inline-block; height:128px; line-height:128px; margin:0 auto 20px auto; font-size:70px; padding-left:150px; font-style:normal; text-align:center; font-weight:bold; }
+#weather i.icon-xiaoyu { background-image:url("../images/icon/xiaoyu.png") }
+#weather i.icon-zhongyu { background-image:url("../images/icon/zhongyu.png"); }
+#weather i.icon-dayu { background-image:url("../images/icon/dayu.png"); }
+#weather i.icon-qing { background-image:url("../images/icon/qing.png"); }
+#weather i.icon-duoyun { background-image:url("../images/icon/duoyun.png"); }
+#weather i.icon-yin { background-image:url("../images/icon/yin.png"); }
+#weather p { background:rgba(0,0,0,.3); margin:0 200px; padding:20px; border-radius:1000px; font-size:16px; }
+#weather p span { margin:0 15px; }
+#weather2 { width:980px; margin:0 auto; margin-top:20px; background:#fafafa; border:1px solid #ddd; padding:30px 0; overflow:hidden; }
+
+
+/*-- Reset Code --*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* start editing from here */
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+.underline{	padding-bottom:5px;	border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*img[width],img[height]{width:auto;height:auto;} wordpress hack to reset the attributes (while making responsive) */
+/*-- Reset Code --*/
+
+/*-- Index - Page - styling --*/
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+    font-size: 38px;
+    margin: 50px 0;
+}
+
+.container {
+    width: 35%;
+    margin: 0 auto;
+}
+
+.titleweather {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #EEE;
+    font-weight: bold;
+    font-size: 23px;
+}
+.city{
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.place {
+    width: 32%;
+    float: left;
+    text-align: center;
+    height: 225px;
+    background-color: #B6C5CA;
+}
+
+div#txt {
+    font-size: 45px;
+    margin: 35px 0;
+    font-family: Gotham-Book;
+}
+
+.dmy {
+    font-size: 25px;
+}
+
+.temp {
+    width: 68%;
+    float: left;
+    background: rgba(169, 169, 169, 0.26);
+    text-align: center;
+    height: 225px;
+}
+
+.temp p {
+    font-size: 75px;
+    margin-top: 100px;
+    color: #EEE;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 200px;
+}
+.footer p {
+    color: #FFF;
+}
+.footer a {
+    color: #FFF;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+/*-- Index - Page - styling --*/
+
+/*-- Responsive - Code --*/
+@media screen and (max-width: 1920px) {
+    h1 {
+        font-size: 50px;
+        margin: 100px 0;
+    }
+    .container {
+        width: 40%;
+    }
+    .city {
+        font-size: 25px;
+    }
+    .place {
+        height: 500px;
+    }
+    div#txt {
+        font-size: 50px;
+        margin: 22px 0px;
+        margin-top: 37%;
+    }
+    .dmy {
+        font-size: 30px;
+    }
+    .temp {
+        height: 500px;
+        background: #778F9A
+    }
+    .temp p {
+        font-size: 50px;
+        margin-top: 48px;
+    }
+}
+
+@media screen and (max-width: 1680px) {
+    .temp {
+        background: #778F9A ;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .diywether > .content > .temp {
+        background: #778F9A ;!important;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    h1 {
+        margin: 75px 0px;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .footer {
+        margin-top: 150px;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    h1 {
+        margin: 40px 0px;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .footer {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+        width: 45%;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .temp p {
+        margin-top: 160px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 55%;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+}
+
+@media screen and (max-width: 966px) {
+    .container {
+        width: 60%;
+    }
+    .footer {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 853px) {
+    h1 {
+        margin: 10px 0px;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .footer {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 70%;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        margin: 40px 0px;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .footer {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .container {
+        width: 75%;
+    }
+    .footer {
+        margin: 80px 0 20px;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    h1 {
+        font-size: 45px;
+    }
+    .container {
+        width: 85%;
+    }
+    .footer {
+        margin: 80px 0 20px;
+    }
+}
+
+@media screen and (max-width: 603px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .footer {
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    h1 {
+        font-size: 45px;
+    }
+    .dmy {
+        font-size: 27px;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .footer {
+        margin: 80px 0 20px;
+    }
+}
+
+@media screen and (max-width: 533px) {
+    .dmy {
+        font-size: 25px;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26)
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 40px;
+    }
+    .container {
+        width: 95%;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .temp p {
+        margin-top: 150px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    h1 {
+        font-size: 35px;
+    }
+    .place {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .temp {
+        width: 100%;
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .footer {
+        margin: 80px 0 20px;
+    }
+    .footer p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    h1 {
+        font-size: 32px;
+    }
+    .temp {
+        background: rgba(169, 169, 169, 0.26);
+    }
+    .temp p {
+        margin-top: 140px;
+    }
+    .footer {
+        margin: 80px 0 20px;
+    }
+    .footer p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    h1 {
+        font-size: 30px;
+    }
+    .place {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .temp {
+        width: 100%;
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .temp p {
+        margin-top: 140px;
+    }
+    .footer p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    h1 {
+        font-size: 28px;
+    }
+    .place {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .temp {
+        width: 100%;
+        background: rgba(169, 169, 169, 0.26) ;
+    }
+    .temp p {
+        margin-top: 140px;
+    }
+    .footer {
+        margin: 80px 0 20px;
+    }
+    .footer p {
+        font-size: 14px;
+    }
+}
+/*-- Responsive - Code --*/
+/*天气部分*/
+td{
+    width: 425.87px;
+    float: left;
+}
+.diywether{
+    margin-bottom: 30px;
+}
+#nowCity{
+    float: left;
+}
+.todayweaimg{
+    float: left;
+}
+#todaytem{
+    float: left;
+}
+.temp p {
+    font-size:18px;!important;
+    margin-top: 48px;!important;
+}
+.temp .col-md-2 {
+    width: 14.266667%;!important;
+}
+/*
+.weekweather{
+    border-right: #FAFAFA solid 1px;
+}*/

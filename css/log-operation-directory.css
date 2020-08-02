@@ -1,0 +1,66 @@
+.innercard .card-header{
+    display: flex ;
+    justify-content:center;
+    align-items: center;
+}
+.innercard .playground ul li{
+    display: flex ;
+    justify-content:center;
+    align-items: center;
+    border-bottom: #F6F6F6 solid 1px;
+}
+.innercard .centerul{
+    border-left: #E7EAED solid 1px;
+    border-right: #E7EAED solid 1px;
+}
+.d1,.d2{
+    width:50px;
+    height:60px;
+    background-color: white;
+    text-align: center;
+    font-size:26px;
+    font-weight: 800;
+    line-height:60px;
+    cursor: pointer;
+}
+.d1{
+    position:absolute;
+    top:373px;
+    left:10%;
+}
+.d2{
+    position:absolute;
+    top:373px;
+    left:87%;
+}
+/*.nav{
+    display: block;
+    box-sizing: border-box;
+}
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}*/
+.pagination > li {
+    display: inline;
+    float: left;
+    border: none;!important;
+}
+.pageInfo{
+    margin-left: 20px;
+    margin-top: 26px;
+}
+.row {
+    margin-right: -15px;!important: ;
+    margin-left: -15px;
+}
+.table-responsive .row{
+    margin-right: 0px;!important: ;
+    margin-left: -15px;
+}
+/*左右箭头*/
+.fa-chevron-left,.fa-chevron-right{
+    color: #E8EAED;
+}

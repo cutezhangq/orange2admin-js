@@ -1,0 +1,15 @@
+option{
+    font-size: large;
+}
+.form-control{
+    font-size: 17px;
+}
+tbody tr td{
+    text-align: center;
+}
+th:first-child{
+    width: 18px;
+}
+tr:first-child{
+    width: 18px;
+}

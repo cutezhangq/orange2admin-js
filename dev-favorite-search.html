@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>设备收藏管理</title>
+    <link rel="stylesheet" href="css/style.min.css"/>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.css"/>
+    <link rel="stylesheet" href="vendor/bootstrap-select-1.13.7/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="css/dev-favorite.css">
+</head>
+<body>
+<div id="container">
+    <div class="maxselect" style="transform:scale(1.5);">
+    <div class="dropdown bootstrap-select bs3" style="position:relative;float:left">
+        <select class="selectpicker" id="DevFavorSelect">
+            <option value="all">全部</option>
+            <option value="favorAlbum">专辑</option>
+            <option value="favorProgram">节目</option>
+            <option value="favorWord">单词</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <input id="DeviceId" type="text" class="form-control" aria-label="..." placeholder="请输入设备ID">
+        <div class="input-group-btn" style="width:50px">
+            <button type="submit" class="btn btn-info" id="DevFavorSearch">搜索</button>
+        </div>
+    </div>
+    </div>
+</div>
+<!--注意这三者顺序-->
+<script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="vendor/bootstrap-3.3.7/js/bootstrap.js"></script>
+<script type="text/javascript" src="vendor/bootstrap-select-1.13.7/js/bootstrap-select.js"></script>
+<script src="js/entity.js"></script>
+<script src="js/constant.js"></script>
+<script src="js/table-menu.js"></script>
+<script src="js/pageInfo&nav.js"></script>
+<script src="js/dev-favorite.js"></script>
+<!--注意这三者顺序-->
+</body>
+</html>

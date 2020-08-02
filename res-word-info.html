@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>教材专辑</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="vendor/materialdesign/css/materialdesignicons.css">
+    <link rel="stylesheet" href="vendor/bootstrap-select-1.13.7/css/bootstrap-select.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.css">
+    <!--对话框-->
+    <link rel="stylesheet" href="vendor/jquery-confirm-v3.3.4/css/jquery-confirm.less">
+    <!--modal部分-->
+    <link rel="stylesheet" href="vendor/bootstrap-multitabs/multitabs.min.css">
+</head>
+<body>
+<div class="container-fluid p-t-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <h3 class="card-header">单词节目</h3>
+                <div class="card-toolbar clearfix">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div>显示数目
+                                <select class="selectpicker dataNumber">
+                                    <option>5</option>
+                                    <option>12</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="selectpicker filterField" multiple data-selected-text-format="count">
+                            </select>
+                            <input type="button" class="btn btn-info filterBtn" value="请筛选">
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="dropdown bootstrap-select bs3" style="position:relative;float:left">
+                                <select class="selectpicker searchData">
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="...">
+                                <div class="input-group-btn" style="width:50px">
+                                    <button type="submit" class="btn btn-info searchBtn">搜索</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#addDevInfoDate">新增数据
+                            </button>
+                            <button class="btn btn-warning">批量修改</button>
+                            <button class="btn btn-danger example-p-6 batchDel">批量删除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tbl-devInfo">
+                            <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" class="checkAll"><span></span>
+                                    </label>
+                                </th>
+                                <th class="text-center">设备ID</th>
+                                <th class="text-center">设备MAC</th>
+                                <th class="text-center">所属批次</th>
+                                <th class="text-center">固件版本</th>
+                                <th class="text-center">绑定微信</th>
+                                <th class="text-center">授权时间</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 pageInfo"></div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4 pageNav">
+                            <nav>
+                                <ul class="pagination pagination-circle"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!--更新数据模态框-->
+                <div class="modal fade updateData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleModalLabel">修改设备基本信息</h4>
+                            </div>
+                            <div class="modal-body center-block">
+                                <form class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">设备id</label>
+                                                <div class="col-sm-8">
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label">设备mac</label>
+                                                <div class="col-sm-6">
+                                                    <p>xxxxxxxxx</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <div class="field">
+                                                    <label class="col-sm-6 control-label">所属批次</label>
+                                                    <div class="col-lg-4">
+                                                        <select class="form-control">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label">固件版本</label>
+                                                <div class="col-lg-4">
+                                                    <select class="form-control" title="123123">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label">绑定微信个数</label>
+                                                <div class="col-sm-6">
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label">授权时间</label>
+                                                <div class="col-lg-4">
+                                                    <input class="form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary">确认</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--添加数据模态框-->
+                <div class="modal fade addData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">New edit</h4>
+                            </div>
+                            <div class="modal-body center-block">
+                                <form class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <div class="devName">
+                                                    <label class="col-sm-6 control-label" style="text-align: left;">设备MAC</label>
+                                                    <div class="col-sm-4" style="line-height: 30px;">
+                                                        <p>xxxxxxxxx</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <div class="devName">
+                                                    <label class="col-sm-6 control-label"
+                                                           style="text-align: left;">设备id</label>
+                                                    <div class="col-sm-4" style="line-height: 30px;">
+                                                        <p>xxxxxxxxx</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label"
+                                                       style="text-align: left;">所属批次</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label"
+                                                       style="text-align: left;">固件版本</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control">
+                                                        <option>版本1</option>
+                                                        <option>版本2</option>
+                                                        <option>版本3</option>
+                                                        <option>版本4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label"
+                                                       style="text-align: left;">绑定微信个数</label>
+                                                <div class="col-sm-4" style="line-height: 30px;">
+                                                    <p>5</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-6 control-label"
+                                                       style="text-align: left;">授权时间</label>
+                                                <div class="col-lg-6">
+                                                    <input class="form-control js-datetimepicker" type="text"
+                                                           id="example-datetimepicker" name="add_time"
+                                                           placeholder="请选择具体时间" value="" data-side-by-side="true"
+                                                           data-locale="zh-cn" data-format="YYYY-MM-DD HH:mm"/>
+                                                </div>
+                                                <input type="hidden" value=""/><br/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Send message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/bootstrap-select.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/i18n/defaults-zh_CN.js"></script>
+    <!--modal部分-->   <!--时间选择插件-->
+    <script src="vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="vendor/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--批量删除---对话框-->
+    <script src="vendor/jconfirm/jquery-confirm.min.js"></script>
+
+    <script src="js/entity.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/table-menu.js"></script>
+    <script src="js/pageInfo&nav.js"></script>
+    <script src="js/res-textbookalbum.js.js"></script>
+
+</div>
+</body>
+</html>

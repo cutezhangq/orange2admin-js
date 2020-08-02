@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>设备收藏管理</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="vendor/materialdesign/css/materialdesignicons.css">
+    <link rel="stylesheet" href="vendor/bootstrap-select-1.13.7/css/bootstrap-select.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.css">
+    <!--批量删除--对话框-->
+    <link rel="stylesheet" href="vendor/jconfirm/jquery-confirm.min.css">
+</head>
+<body>
+<h2 style="text-align: center"></h2>
+<!--表1.-->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <h4 class="card-header">专辑收藏列表</h4>
+            <div class="card-toolbar clearfix">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div>显示数目
+                            <select class="selectpicker dataNumber">
+                                <option>5</option>
+                                <option>12</option>
+                                <option>20</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="selectpicker filterField" multiple data-selected-text-format="count">
+                        </select>
+                        <input type="button" class="btn btn-info filterBtn" value="请筛选">
+                    </div>
+                    <div class="col-lg-6">
+                        <button class="btn btn-yellow">条件查询</button>
+                        <button class="btn btn-success newDataInfo" data-toggle="modal" data-target="#addDevInfo">新增数据</button>
+                        <button class="btn btn-danger example-p-6 batchDel">批量删除</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tbl-favAlbum">
+                        <thead>
+                        <tr>
+                            <th class="text-center">
+                                <label class="lyear-checkbox checkbox-primary">
+                                    <input type="checkbox" class="checkAll"><span></span>
+                                </label>
+                            </th>
+                            <th class="text-center">收藏专辑ID</th>
+                            <th class="text-center">专辑名称</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 pageInfo"></div>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4 pageNav">
+                        <nav>
+                            <ul class="pagination pagination-circle"></ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--新增数据模态框-->
+            <div class="modal fade addDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" style="width: 28%" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="">添加专辑收藏列表</h4>
+                        </div>
+                        <div class="modal-body center-block">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">收藏专辑ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control"  placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary commitBtn">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--更新数据模态框-->
+            <div class="modal fade updateDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" style="width: 28%" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="">添加专辑收藏列表</h4>
+                        </div>
+                        <div class="modal-body center-block">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">收藏专辑ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary commitBtn">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--表2.-->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <h4 class="card-header">节目收藏列表</h4>
+            <div class="card-toolbar clearfix">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div>显示数目
+                            <select class="selectpicker dataNumber">
+                                <option>5</option>
+                                <option>12</option>
+                                <option>20</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="selectpicker filterField" multiple data-selected-text-format="count">
+                        </select>
+                        <input type="button" class="btn btn-info filterBtn" value="请筛选">
+                    </div>
+                    <div class="col-lg-6">
+                        <button class="btn btn-yellow" >条件查询</button>
+                        <button class="btn btn-success newDataInfo" data-toggle="modal" data-target="#addDevInfo">新增数据</button>
+                        <button class="btn btn-danger  example-p-6 batchDel">批量删除</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tbl-favProgram">
+                        <thead>
+                        <tr>
+                            <th class="text-center">
+                                <label class="lyear-checkbox checkbox-primary">
+                                    <input type="checkbox" class="checkAll"><span></span>
+                                </label>
+                            </th>
+                            <th class="text-center">收藏节目ID</th>
+                            <th class="text-center">节目名称</th>
+                            <th class="text-center">所属专辑ID</th>
+                            <th class="text-center">所属专辑名称</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 pageInfo"></div>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4 pageNav">
+                        <nav>
+                            <ul class="pagination pagination-circle"></ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--新增数据模态框-->
+            <div class="modal fade updateDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" style="width: 28%" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" i>添加节目收藏列表</h4>
+                        </div>
+                        <div class="modal-body center-block">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">收藏节目ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary commitBtn">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--添加数据模态框-->
+            <div class="modal fade addDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" style="width: 28%" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" i>添加节目收藏列表</h4>
+                        </div>
+                        <div class="modal-body center-block">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">收藏节目ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control"  placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary commitBtn">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--表3.-->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <h4 class="card-header">单词收藏列表</h4>
+            <div class="card-toolbar clearfix">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div>显示数目
+                            <select class="selectpicker dataNumber">
+                                <option>5</option>
+                                <option>12</option>
+                                <option>20</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="selectpicker filterField" multiple data-selected-text-format="count">
+                        </select>
+                        <input type="button" class="btn btn-info filterBtn" value="请筛选">
+                    </div>
+                    <div class="col-lg-6">
+                        <button class="btn btn-yellow">条件查询</button>
+                        <button class="btn btn-success newDataInfo" data-toggle="modal" data-target="#addDevInfo">新增数据</button>
+                        <button class="btn btn-danger example-p-6 batchDel">批量删除</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tbl-favWord">
+                        <thead>
+                        <tr>
+                            <th class="text-center">
+                                <label class="lyear-checkbox checkbox-primary">
+                                    <input type="checkbox" class="checkAll"><span></span>
+                                </label>
+                            </th>
+                            <th class="text-center">收藏单词ID</th>
+                            <th class="text-center">单词</th>
+                            <th class="text-center">所属专辑ID</th>
+                            <th class="text-center">所属专辑名称</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 pageInfo"></div>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4 pageNav">
+                        <nav>
+                            <ul class="pagination pagination-circle"></ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--更新数据模态框-->
+            <div class="modal fade updateDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" style="width: 28%" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">添加单词收藏列表</h4>
+                        </div>
+                        <div class="modal-body center-block">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">收藏单词ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary commitBtn">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--添加数据模态框-->
+            <div class="modal fade addDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" style="width: 28%" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">添加单词收藏列表</h4>
+                        </div>
+                        <div class="modal-body center-block">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">收藏单词ID</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control"  placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary commitBtn">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="vendor/jquery/jquery.js"></script>
+<script src="vendor/bootstrap-3.3.7/js/bootstrap.js"></script>
+<script src="vendor/bootstrap-select-1.13.7/js/bootstrap-select.js"></script>
+<script src="vendor/bootstrap-select-1.13.7/js/i18n/defaults-zh_CN.js"></script>
+<script src="js/entity.js"></script>
+<script src="js/constant.js"></script>
+<script src="js/table-menu.js"></script>
+<script src="js/pageInfo&nav.js"></script>
+<script src="js/dev-favoritesss.js"></script>
+<!--批量删除---对话框-->
+<script src="vendor/jconfirm/jquery-confirm.min.js"></script>
+
+</body>
+</html>

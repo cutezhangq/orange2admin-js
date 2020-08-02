@@ -1,0 +1,219 @@
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>角色分配管理</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="vendor/MaterialDesign/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-select-1.13.7/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/role-assign-manage.css">
+    <!--批量删除--对话框-->
+    <link rel="stylesheet" href="vendor/jconfirm/jquery-confirm.min.css">
+
+</head>
+<body>
+<div class="container-fluid p-t-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <h3 class="card-header">角色分配管理</h3>
+                <div class="card-toolbar clearfix">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div>显示数目
+                                <select class="selectpicker dataNumber">
+                                    <option>5</option>
+                                    <option>12</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="selectpicker filterField" multiple data-selected-text-format="count">
+                                <option>所属角色</option>
+                                <option>角色所属组</option>
+                                <option>角色等级</option>
+                            </select>
+                            <input type="button" class="btn btn-info filterBtn" value="请筛选">
+                        </div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-yellow" style="margin-left: 41%;">条件查询</button>
+                            <button class="btn btn-success newDataInfo" data-toggle="modal" data-target="#addDevInfoDate">新增数据</button>
+                            <button class="btn btn-warning">批量修改</button>
+                            <button class="btn btn-danger example-p-6 batchDel">批量删除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tbl-devInfo">
+                            <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" class="checkAll"><span></span>
+                                    </label>
+                                </th>
+                                <th class="text-center">用户ID</th>
+                                <th class="text-center">所属角色</th>
+                                <th class="text-center">角色所属组</th>
+                                <th class="text-center">角色等级</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>4g3gnuiehg33egv2423423f2</td>
+                                <td>高级用户</td>
+                                <td>B1</td>
+                                <td>5</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>32fdg34grnigu34g4g3v</td>
+                                <td>高级用户</td>
+                                <td>B1</td>
+                                <td>5</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>09u9vbwjg3w42gv23t2vgw</td>
+                                <td>管理员</td>
+                                <td>A1</td>
+                                <td>5</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>21r23fewf23rfewfwg2gee</td>
+                                <td>普通用户</td>
+                                <td>B1</td>
+                                <td>2</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>4524grg43g23g2rwxg</td>
+                                <td>访客</td>
+                                <td>C1</td>
+                                <td>1</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>ewg24th4t23tg23efg23g223</td>
+                                <td>访客</td>
+                                <td>C1</td>
+                                <td>1</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>35y4h3aqgv23fvewsfqe</td>
+                                <td>特殊用户</td>
+                                <td>B2</td>
+                                <td>4</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>12432fewdv24gfew</td>
+                                <td>管理员</td>
+                                <td>A1</td>
+                                <td>2</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><label class='lyear-checkbox checkbox-primary'><input type='checkbox' class='checkItem'><span></span></label></td>
+                                <td>wy45u45tyg5wh24qgefeds</td>
+                                <td>访客</td>
+                                <td>C1</td>
+                                <td>5</td>
+                                <td><div class="btn-group">
+                                    <a class="editBtn btn btn-xs btn-default"><li class="fa fa-pencil-square-o fa-lg"></li></a>
+                                    <a class="delBtn btn btn-xs btn-default"><li class="fa fa-trash-o fa-lg"></li></a>
+                                </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--分页导航，分页信息-->
+                    <div class="row">
+                        <div class="col-lg-4 pageInfo">当前第1页，总共764页，总共463575条记录</div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4 pageNav">
+                            <div class="col-lg-2"></div>
+                            <nav>
+                                <ul class="pagination pagination-circle">
+                                    <li class="disabled"><a href="#">首</a></li>
+                                    <li class="disabled"><a href="#">«</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li class=""><a href="#">2</a></li>
+                                    <li class=""><a href="#">3</a></li>
+                                    <li class=""><a href="#">4</a></li>
+                                    <li class=""><a href="#">5</a></li>
+                                    <li class=""><a href="#">6</a></li>
+                                    <li class=""><a href="#">»</a></li>
+                                    <li class=""><a href="#">尾</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class=" col-lg-2"></div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/bootstrap-select.js"></script>
+    <script src="vendor/bootstrap-select-1.13.7/js/i18n/defaults-zh_CN.js"></script>
+
+    <script src="js/pageInfo&nav.js"></script>
+
+
+</div>
+</body>
+</html>

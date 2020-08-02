@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分类专辑</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="vendor/MaterialDesign/css/materialdesignicons.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.css">
+
+    <link rel="stylesheet" href="css/res-classInfo-album.css">
+</head>
+<body>
+<div class="container-fluid p-t-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card cardborder">
+                <div class="card-header card-toolbar clearfix">
+                    <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-3">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#addResAlbumDate">新增数据
+                            </button>
+                            <button class="btn btn-warning">批量修改</button>
+                            <button class="btn btn-danger example-p-6 batchDel">批量删除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" id="main" style="box-sizing:content-box;">
+                    <div class="table-responsive ">
+                        <div class="col-lg-2"></div>
+                        <!-- 分类card:1 -->
+                        <div class="card col-lg-8 innercard">
+                            <h3 class="card-header">XXXX专辑:1</h3>
+                            <div class="card-body">
+                                <!-- 专辑1 -->
+                                <div class="playground hovertreeaction"><!--灰色面板-->
+                                    <ul class="draglist clearfix" id="list3" data-groupid="gid-3">
+                                        <li data-id="1" data-groupid="gid-3">
+                                            <div class="uicard" draggable="true">
+                                                <img width="150" height="110" src="images/testimgs/1.jpg" draggable="false"/>
+                                                <div class="card-text">
+                                                    <h5>Some Title</h5>
+                                                    <span>Lorem ipsum dolor sit amet, sed diam...</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li data-id="2" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/5.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="3" data-groupid="gid-3">
+                                        <div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/2.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                            <!--<div class="rsp"></div>
+                                            <div class="rsptext"><a href="#"><h3>XXX专辑</h3></a></div>-->
+                                        </div>
+                                        </li>
+                                        <li data-id="4" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/3.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="5" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/2.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="6" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/3.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="7" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/2.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="8" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/3.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="9" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/1.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor sit amet, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="10" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/5.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="11" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/2.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                        <li data-id="12" data-groupid="gid-3"><div class="uicard" draggable="true">
+                                            <img width="150" height="110" src="images/testimgs/3.jpg" draggable="false"/>
+                                            <div class="card-text">
+                                                <h5>Some Title</h5>
+                                                <span>Lorem ipsum dolor elitr, sed diam...</span>
+                                            </div>
+                                        </div></li>
+                                    </ul>
+                                    <input name="sortorder" id ="gid-3" type="hidden" value="1,2,3,4,5,6,7,8,9,10,11,12"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="clear:both;"></div>
+
+<script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="vendor/jquery.dragsort-0.5.2.min.js"></script><!--拖动效果-->
+<script type="text/javascript" src="js/res-classInfo-album.js"></script>
+
+
+</body>
+</html>

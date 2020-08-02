@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>数据分析</title>
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/MaterialDesign/css/materialdesignicons.min.css"><!--小图标-->
+    <link rel="stylesheet" href="css/style.min.css">
+    <!--天气-->
+    <link rel="stylesheet" href="css/data-analysis.css">
+
+</head>
+<body style="height: 100%; margin: 0" onload="startTime()">
+<div class="container-fluid p-t-15">
+    <!--4个方格-->
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="card bg-primary">
+                <div class="card-body clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-white m-t-0">今日操作数</p>
+                        <p class="h3 text-white m-b-0">102,125.00</p>
+                    </div>
+                    <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-chart-areaspline fa-1-5x"></i></span> </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card bg-danger">
+                <div class="card-body clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-white m-t-0">用户总数</p>
+                        <p class="h3 text-white m-b-0">920,000</p>
+                    </div>
+                    <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span> </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card bg-success">
+                <div class="card-body clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-white m-t-0">下载总量</p>
+                        <p class="h3 text-white m-b-0">34,005,000</p>
+                    </div>
+                    <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-arrow-down-bold fa-1-5x"></i></span> </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card bg-purple">
+                <div class="card-body clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-white m-t-0">新增留言</p>
+                        <p class="h3 text-white m-b-0">153 条</p>
+                    </div>
+                    <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-comment-outline fa-1-5x"></i></span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--图表-->
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>柱状图</h4>
+                </div>
+                <div class="card-body">
+                    <div id="echartjs-bars" style="height: 300%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>折线图</h4>
+                </div>
+                <div class="card-body">
+                     <div id="echartjs-lines"  style="height: 300%"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--天气-->
+    <div class="row">
+        <!--天气-->
+        <div class="col-md-12 diywether">
+            <div class="card">
+                <div class="titleweather">
+                    今日气象
+                </div>
+                <div class="content">
+                    <div class="place">
+                        <div id="txt"></div>
+                        <div class="row">
+                            <div class="city col-md-4" id="nowCity"></div>
+                            <div class="city col-md-4" id="todaytem"></div>
+                            <div class="todayweaimg col-md-4" id="todayweaImg">
+                        </div>
+
+                        </div>
+                        <div class="dmy">
+                            <script type="text/javascript">
+                                var mydate=new Date()
+                                var year=mydate.getYear()
+                                if(year<1000)
+                                    year+=1900
+                                var day=mydate.getDay()
+                                var month=mydate.getMonth()
+                                var daym=mydate.getDate()
+                                if(daym<10)
+                                    daym="0"+daym
+                                var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+                                var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+                                document.write(""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"")
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="temp" >
+                        <div class="row" id="rowtempother"></div>
+                        <!--<div class="otherWeather" id="OtherWeather"></div>--><!--近七天天气信息-->
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+            </div>
+
+        <!--<div class="col-md-6"></div>-->
+
+</div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="vendor/echarts/echarts.min.js"></script>
+<script src="js/data-analysis.js"></script>
+<!--天气的时间-->
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+</script>
+</body>
+</html>
